@@ -1,9 +1,9 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
   mode: 'development', // Set the mode to development
-  entry: ['@babel/polyfill', './src/index.ts'], // Entry point for the application
+  entry: ['./src/index.ts'], // Entry point for the application
+  devtool: 'source-map',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -11,6 +11,15 @@ module.exports = {
       name: 'bundle',
       type: 'var'
     }
+  },
+  resolve: {
+    extensions: ['.ts', '.js'],
+    fallback: {
+        "crypto": require.resolve("crypto-browserify"),
+        "stream": require.resolve("stream-browserify"),
+        "buffer": require.resolve("buffer/"),
+        "vm": require.resolve("vm-browserify"),
+    },
   },
   module: {
     rules: [
