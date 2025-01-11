@@ -35,7 +35,7 @@
     ],
     "license": "MIT",
     "scripts": {
-        "build": "make build",
+        "build": "webpack",
         "lint": "make lint",
         "deploy": "yarn build && npm publish",
         "test": "make test"
@@ -44,9 +44,14 @@
         "@polymarket/order-utils": "^2.1.0",
         "axios": "^0.27.2",
         "browser-or-node": "^2.1.1",
-        "ethers": "^5.7.1"
+        "buffer": "^6.0.3",
+        "crypto-browserify": "^3.12.1",
+        "ethers": "^5.7.1",
+        "stream-browserify": "^3.0.0",
+        "vm-browserify": "^1.1.2"
     },
     "devDependencies": {
+        "@babel/polyfill": "^7.12.1",
         "@types/chai": "^4.3.3",
         "@types/mocha": "^9.1.1",
         "@types/node": "^18.7.18",
@@ -70,9 +75,12 @@
         "nyc": "^15.1.0",
         "path": "^0.12.7",
         "prettier": "^2.7.1",
+        "ts-loader": "^9.5.2",
         "ts-mocha": "^10.0.0",
         "ts-node": "^10.9.1",
         "typescript": "^4.8.3",
+        "webpack": "^5.97.1",
+        "webpack-cli": "^6.0.1",
         "ws": "^8.11.0"
     }
 }
