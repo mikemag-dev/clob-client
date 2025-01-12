@@ -3,7 +3,8 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: path.resolve(__dirname, 'src/index.ts'),
-    mode: 'production',
+    mode: 'development',
+    devtool: 'source-map',
     module: {
         rules: [
             {
@@ -25,10 +26,24 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             Buffer: ['buffer', 'Buffer']
+        }),
+        new webpack.DefinePlugin({
+          'process.env': {
+            NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+            // Add any other environment variables you need here
+          },
         })
     ],
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        library: {
+          name: 'bundle', // Name of the global variable for the library
+          type: 'var' // Type of the library (var means it will be available as a global variable)
+        },
     }
 };
+//       'process.env.NODE_ENV': JSON.stringify('development') // Define process.env.NODE_ENV
+//     }),
+//   ],
+// };
