@@ -1,4 +1,4 @@
 
 export function test(): string {
-    return "Hello, World!";
+    return "Hello, World!" + process.env;
 }

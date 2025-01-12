@@ -25,14 +25,9 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            Buffer: ['buffer', 'Buffer']
+            Buffer: ['buffer', 'Buffer'],
+            process: 'process/browser',
         }),
-        new webpack.DefinePlugin({
-          'process.env': {
-            NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-            // Add any other environment variables you need here
-          },
-        })
     ],
     output: {
         filename: 'bundle.js',
